@@ -1,6 +1,9 @@
 import Component from '../Component';
 import {singleton, unique} from './validators';
 
+/**
+ * VEVENT class.
+ */
 export default class VEVENT extends Component {
   static componentName = 'VEVENT';
 

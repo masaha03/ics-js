@@ -14,18 +14,6 @@ const propProps = {
 const propWithProps = new Property(value, propProps);
 
 describe('Property', () => {
-  describe('::keyRegex', () => {
-    const keyRegex = Property.keyRegex;
-
-    it('should return false for keys containing invalid characters', () => {
-      assert.equal(keyRegex.test(invalidName), false);
-    });
-
-    it('should return true for a valid key', () => {
-      assert.equal(keyRegex.test(validName), true);
-    });
-  });
-
   describe('#constructor()', () => {
     it('should create a new instance of Property', () => {
       assert.equal(prop instanceof Property, true);

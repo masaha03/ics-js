@@ -1,9 +1,7 @@
 import Property from '../Property';
 
-const baseProp = (name) => {
+export default (name) => {
   return class base extends Property {
     static propName = name;
   };
 };
-
-export default baseProp;

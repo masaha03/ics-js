@@ -1,6 +1,9 @@
 import Component from '../Component';
 import {singleton} from './validators';
 
+/**
+ * VALARM class.
+ */
 export default class VALARM extends Component {
   static componentName = 'VALARM';
 

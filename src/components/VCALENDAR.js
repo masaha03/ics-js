@@ -1,6 +1,9 @@
 import Component from '../Component';
 import {singleton} from './validators';
 
+/**
+ * VCALENDAR class.
+ */
 export default class VCALENDAR extends Component {
   static componentName = 'VCALENDAR';
 

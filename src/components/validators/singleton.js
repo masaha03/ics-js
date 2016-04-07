@@ -2,6 +2,12 @@ import Property from '../../Property';
 import Component from '../../Component';
 import {ValidationError} from '../../errors';
 
+/**
+ * Validator to ensure only one instance of the subject is present in the
+ * component.
+ *
+ * @throws {ValidationError} An instance of the subject is already present in the component.
+ */
 export default () => {
   return (component, subject) => {
     let subjectName;

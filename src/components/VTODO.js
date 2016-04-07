@@ -1,6 +1,9 @@
 import Component from '../Component';
 import {singleton, unique} from './validators';
 
+/**
+ * VTODO class.
+ */
 export default class VTODO extends Component {
   static componentName = 'VTODO';
 
