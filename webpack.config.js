@@ -15,7 +15,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules\/(?!parse-it)/,
+        exclude: /node_modules\/(?!parse-it|formatoid)/,
         loader: 'babel',
       }
     ],
