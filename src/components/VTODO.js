@@ -3,6 +3,8 @@ import {singleton, unique} from './validators';
 
 /**
  * VTODO class.
+ *
+ * @see https://tools.ietf.org/html/rfc5545#section-3.6.2
  */
 export default class VTODO extends Component {
   static componentName = 'VTODO';

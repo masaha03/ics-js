@@ -3,6 +3,8 @@ import {singleton} from './validators';
 
 /**
  * VCALENDAR class.
+ *
+ * @see https://tools.ietf.org/html/rfc5545#section-3.4
  */
 export default class VCALENDAR extends Component {
   static componentName = 'VCALENDAR';

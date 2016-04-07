@@ -3,6 +3,8 @@ import {singleton, unique} from './validators';
 
 /**
  * VEVENT class.
+ *
+ * @see https://tools.ietf.org/html/rfc5545#section-3.6.1
  */
 export default class VEVENT extends Component {
   static componentName = 'VEVENT';

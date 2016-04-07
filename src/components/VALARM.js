@@ -3,6 +3,8 @@ import {singleton} from './validators';
 
 /**
  * VALARM class.
+ *
+ * @see https://tools.ietf.org/html/rfc5545#section-3.6.6
  */
 export default class VALARM extends Component {
   static componentName = 'VALARM';
