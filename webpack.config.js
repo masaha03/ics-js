@@ -4,43 +4,38 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: [path.resolve(__dirname, 'src/ICS.js')],
+  entry: './src/index.js',
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: 'dist',
     filename: 'ics-js.js',
-    publicPath: '/dist/',
-    pathinfo: false,
-    libraryTarget: 'umd',
   },
 
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel' }
+      {
+        test: /\.js$/,
+        loader: 'babel',
+      }
     ],
   },
 
-  target: 'node',
-  devtool: false,
-  debug: false,
-  cache: false,
-
-  stats: {
-    colors: true,
-    reasons: false,
-  },
-
   resolve: {
-    root: path.join(__dirname, 'src'),
+    modulesDirectories: ['node_modules'],
     extensions: ['', '.js'],
-  },
-
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
   },
 
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      mangle: true,
+      output: {
+        comments: false
+      },
+    }),
   ],
 };
