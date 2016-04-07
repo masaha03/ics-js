@@ -3,8 +3,6 @@
 import assert from 'assert';
 import Property from '../../src/Property';
 
-const validName = 'DSTART';
-const invalidName = '-DStart-';
 const value = 'value';
 const prop = new Property(value);
 const propProps = {
