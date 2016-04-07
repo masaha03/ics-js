@@ -2,7 +2,7 @@
   "name": "ics-js",
   "version": "0.8.7",
   "description": "Create ICS files in ES6",
-  "main": "dist/ics-js.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint src test",
     "test": "mocha",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "es6-error": "^1.0.0",
-    "formatoid": "^1.0.1",
+    "format-date": "azer/format-date",
     "simple-guid": "0.0.1"
   }
 }

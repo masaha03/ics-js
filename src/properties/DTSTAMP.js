@@ -1,4 +1,4 @@
-import formatoid from 'formatoid';
+import formatDate from 'format-date';
 import { DATE_FORMAT, DATE_TIME_FORMAT } from '../constants';
 import Property from '../Property';
 
@@ -19,6 +19,6 @@ export default class DTSTAMP extends Property {
     }
 
     const format = valueIsDate ? DATE_FORMAT : DATE_TIME_FORMAT;
-    return formatoid(this.value, format);
+    return formatDate(format, this.value);
   }
 }
