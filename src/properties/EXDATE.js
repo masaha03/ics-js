@@ -1,6 +1,6 @@
 import formatoid from 'formatoid';
-import ICS from '../ICS';
-import Property from '../Property';
+import ICS from 'ICS';
+import Property from 'Property';
 
 export default class EXDATE extends Property {
   static propName = 'EXDATE';

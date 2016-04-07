@@ -1,5 +1,5 @@
-import Component from '../Component';
-import { singleton } from './validators';
+import Component from 'Component';
+import { singleton } from 'components/validators';
 
 export default class VALARM extends Component {
   static componentName = 'VALARM';

@@ -1,6 +1,6 @@
 import formatoid from 'formatoid';
-import ICS from '../ICS';
-import Property from '../Property';
+import ICS from 'ICS';
+import Property from 'Property';
 
 export default class DTSTAMP extends Property {
   static propName = 'DTSTAMP';

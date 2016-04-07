@@ -1,10 +1,10 @@
-import ICS from './ICS';
-import * as properties from './properties';
+import ICS from 'ICS';
+import * as properties from 'properties';
 import {
   InvalidComponentError,
   InvalidProvidedComponentError,
   InvalidProvidedPropError
-} from './errors';
+} from 'errors';
 
 export default class Component {
   static componentName = 'Component';

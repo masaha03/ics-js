@@ -1,4 +1,4 @@
-import Property from '../Property';
+import Property from 'Property';
 
 export default class GEO extends Property {
   static propName = 'GEO';
