@@ -1,1 +1,3 @@
-export ICS from 'ICS';
+import * as components from './components';
+
+export default components;

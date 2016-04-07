@@ -1,5 +1,5 @@
-import Component from 'Component';
-import { singleton, unique } from 'components/validators';
+import Component from '../Component';
+import { singleton, unique } from './validators';
 
 export default class VTODO extends Component {
   static componentName = 'VTODO';

@@ -1,6 +1,3 @@
-'use strict';
-
-var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
@@ -22,7 +19,7 @@ module.exports = {
   },
 
   resolve: {
-    modulesDirectories: ['node_modules', './src'],
+    modulesDirectories: ['node_modules'],
     extensions: ['', '.js'],
   },
 

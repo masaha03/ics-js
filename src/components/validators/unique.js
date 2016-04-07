@@ -1,6 +1,6 @@
-import Property from 'Property';
-import Component from 'Component';
-import { ValidationError } from 'errors';
+import Property from '../../Property';
+import Component from '../../Component';
+import { ValidationError } from '../../errors';
 
 export default function unique(uniqueNames) {
   return (component, subject) => {

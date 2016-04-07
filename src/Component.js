@@ -1,10 +1,10 @@
-import ICS from 'ICS';
-import * as properties from 'properties';
+import {MIME_TYPE} from './constants';
+import * as properties from './properties';
 import {
   InvalidComponentError,
   InvalidProvidedComponentError,
   InvalidProvidedPropError
-} from 'errors';
+} from './errors';
 
 export default class Component {
   static componentName = 'Component';
@@ -96,7 +96,7 @@ export default class Component {
   }
 
   toBlob() {
-    return new Blob([this.toString()], { type: ICS.MIME_TYPE });
+    return new Blob([this.toString()], { type: MIME_TYPE });
   }
 
   toBase64() {

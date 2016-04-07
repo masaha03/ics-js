@@ -1,5 +1,6 @@
 import assert from 'assert';
-import ICS from '../../src/ICS';
+import ICS from '../../src';
+import Component from '../../src/Component';
 import { VERSION } from '../../src/properties';
 import {
   InvalidComponentError,
@@ -19,7 +20,7 @@ describe('Component', function() {
 
   describe('#constructor()', function() {
     it('should create a new instance of Component', function() {
-      assert.equal(component instanceof ICS.Component, true);
+      assert.equal(component instanceof Component, true);
     });
 
     it('should have an empty `_props` instance property', function() {

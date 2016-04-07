@@ -1,6 +1,6 @@
 import formatoid from 'formatoid';
-import ICS from 'ICS';
-import Property from 'Property';
+import { DATE_FORMAT, DATE_TIME_FORMAT } from '../constants';
+import Property from '../Property';
 
 export default class EXDATE extends Property {
   static propName = 'EXDATE';
@@ -15,7 +15,7 @@ export default class EXDATE extends Property {
 
   transformer() {
     const valueIsDate = this.props.VALUE == 'DATE';
-    const format = valueIsDate ? ICS.DateFormat : ICS.DateTimeFormat;
+    const format = valueIsDate ? DATE_FORMAT : DATE_TIME_FORMAT;
 
     return this.value.map(function(value) {
       if (valueIsDate) {

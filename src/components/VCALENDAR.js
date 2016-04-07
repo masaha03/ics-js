@@ -1,5 +1,5 @@
-import Component from 'Component';
-import { singleton } from 'components/validators';
+import Component from '../Component';
+import { singleton } from './validators';
 
 export default class VCALENDAR extends Component {
   static componentName = 'VCALENDAR';

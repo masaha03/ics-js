@@ -1,19 +1,19 @@
 import assert from 'assert';
-import ICS from '../../src/ICS';
+import Property from '../../src/Property';
 
 const validName = 'DSTART';
 const invalidName = '-DStart-';
 const value = 'value';
-const prop = new ICS.Property(value);
+const prop = new Property(value);
 const propProps = {
   KEY1: 'VALUE1',
   KEY2: 'VALUE2'
 };
-const propWithProps = new ICS.Property(value, propProps);
+const propWithProps = new Property(value, propProps);
 
 describe('Property', function() {
   describe('::keyRegex', function() {
-    const keyRegex = ICS.Property.keyRegex;
+    const keyRegex = Property.keyRegex;
 
     it('should return false for keys containing invalid characters', function() {
       assert.equal(keyRegex.test(invalidName), false);
@@ -25,8 +25,8 @@ describe('Property', function() {
   });
 
   describe('#constructor()', function() {
-    it('should create a new instance of ICS.Property', function() {
-      assert.equal(prop instanceof ICS.Property, true);
+    it('should create a new instance of Property', function() {
+      assert.equal(prop instanceof Property, true);
     });
 
     it('should have defined `value` and `skipTransformer` instance properties', function() {

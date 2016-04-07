@@ -1,4 +1,4 @@
-import Property from 'Property';
+import Property from '../Property';
 
 export default class TRANSP extends Property {
   static propName = 'TRANSP';
