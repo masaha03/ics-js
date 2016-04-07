@@ -15,13 +15,14 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
+        exclude: /node_modules\/(?!parse-it)/,
         loader: 'babel',
       }
     ],
   },
 
   resolve: {
-    modulesDirectories: ['node_modules'],
+    modulesDirectories: ['node_modules', './src'],
     extensions: ['', '.js'],
   },
 
