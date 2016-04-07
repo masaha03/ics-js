@@ -4,11 +4,11 @@ import Property from '../Property';
 export default class UID extends Property {
   static propName = 'UID';
 
-  shortTransformer() {
-    return !!this.value;
+  shortTransformer () {
+    return Boolean(this.value);
   }
 
-  transformer() {
+  transformer () {
     return guid();
   }
 }

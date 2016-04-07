@@ -1,5 +1,5 @@
 import Component from '../Component';
-import { singleton, unique } from './validators';
+import {singleton, unique} from './validators';
 
 export default class VEVENT extends Component {
   static componentName = 'VEVENT';
@@ -7,25 +7,26 @@ export default class VEVENT extends Component {
   static requiredProps = ['DTSTAMP', 'UID'];
 
   static validProps = {
+    /* eslint-disable key-spacing, sorting/sort-object-props */
     DTSTAMP:           [singleton()],
     UID:               [singleton()],
 
-    DTSTART:           [singleton()],
     CLASS:             [singleton()],
     CREATED:           [singleton()],
     DESCRIPTION:       [singleton()],
+    DTSTART:           [singleton()],
     GEO:               [singleton()],
     'LAST-MOD':        [singleton()],
     LOCATION:          [singleton()],
     ORGANIZER:         [singleton()],
     PRIORITY:          [singleton()],
+    'RECURRENCE-ID':   [singleton()],
+    RRULE:             [singleton()],
     SEQUENCE:          [singleton()],
     STATUS:            [singleton()],
     SUMMARY:           [singleton()],
     TRANSP:            [singleton()],
     URL:               [singleton()],
-    'RECURRENCE-ID':   [singleton()],
-    RRULE:             [singleton()],
 
     DTEND:             [singleton(), unique(['DURATION'])],
     DURATION:          [singleton(), unique(['DTEND'])],
@@ -36,10 +37,11 @@ export default class VEVENT extends Component {
     COMMENT:           [],
     CONTACT:           [],
     EXDATE:            [],
-    'REQUEST-STATUS':  [],
+    RDATE:             [],
     RELATED:           [],
-    RESOURCES:         [],
-    RDATE:             []
+    'REQUEST-STATUS':  [],
+    RESOURCES:         []
+    /* eslint-enable key-spacing, sorting/sort-object-props */
   }
 
   static validComponents = {

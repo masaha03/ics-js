@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/index.js',
 
   output: {
-    path: 'dist',
+    path: 'lib',
     filename: 'ics-js.js',
   },
 

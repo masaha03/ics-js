@@ -1,3 +1,4 @@
+import difference from 'lodash/difference';
 import {MIME_TYPE} from './constants';
 import * as properties from './properties';
 import {
@@ -16,76 +17,99 @@ export default class Component {
   static validProps = {};
   static validComponents = {};
 
-  constructor() {
-    this.prefix = `BEGIN:${this.constructor.componentName}`;
-    this.suffix = `END:${this.constructor.componentName}`;
+  constructor () {
+    this.prefix = 'BEGIN:' + this.constructor.componentName;
+    this.suffix = 'END:' + this.constructor.componentName;
 
-    this._props = [];
-    this._components = [];
+    this.internalProps = [];
+    this.internalComponents = [];
   }
 
-  props() {
-    return Object.freeze(this._props.slice(0));
+  props () {
+    return Object.freeze(this.internalProps.slice(0));
   }
 
-  propNames() {
-    return Object.freeze(this.props().map(prop => prop.constructor.propName));
+  propNames () {
+    return Object.freeze(this.internalProps.map((prop) => {
+      return prop.constructor.propName;
+    }));
   }
 
   // Set props to null or {} if not needed
-  addProp(name, value, props, skipTransformer) {
-    const { validProps } = this.constructor;
-    if (!validProps[name]) throw new InvalidProvidedPropError();
+  addProp (name, value, props, skipTransformer) {
+    const {validProps} = this.constructor;
 
-    const PropClass = properties[name] || properties._default(name);
+    if (!validProps[name]) {
+      throw new InvalidProvidedPropError();
+    }
+
+    const PropClass = properties[name] || properties.base(name); // eslint-disable-line import/namespace
     const prop = new PropClass(value, props, skipTransformer);
-    validProps[name].forEach(validator => validator(this, prop));
 
-    this._props.push(prop);
+    validProps[name].forEach((validator) => {
+      validator(this, prop);
+    });
+
+    this.internalProps.push(prop);
 
     return prop;
   }
 
-  components() {
-    return Object.freeze(this._components.slice(0));
+  components () {
+    return Object.freeze(this.internalComponents.slice(0));
   }
 
-  componentNames() {
-    return Object.freeze(this.components().map(prop => prop.constructor.componentName));
+  componentNames () {
+    return Object.freeze(this.internalComponents.map((component) => {
+      return component.constructor.componentName;
+    }));
   }
 
-  addComponent(component) {
-    const { validComponents } = this.constructor;
-    const { componentName } = component.constructor;
+  addComponent (component) {
+    const {validComponents} = this.constructor;
+    const {componentName} = component.constructor;
 
-    if (!(component instanceof Component)) throw new TypeError('Expected `component` to be an instance of Component.');
-    if (!validComponents[componentName]) throw new InvalidProvidedComponentError();
+    if (!(component instanceof Component)) {
+      throw new TypeError('Expected `component` to be an instance of Component.');
+    }
 
-    validComponents[componentName].forEach(validator => validator(this, component));
+    if (!validComponents[componentName]) {
+      throw new InvalidProvidedComponentError();
+    }
 
-    this._components.push(component);
+    validComponents[componentName].forEach((validator) => {
+      validator(this, component);
+    });
+
+    this.internalComponents.push(component);
+
     return component;
   }
 
-  reset() {
-    this._props = this._components = [];
+  reset () {
+    this.internalProps = this.internalComponents = [];
   }
 
-  validateRequired() {
-    const { requiredProps } = this.constructor;
+  validateRequired () {
+    const {requiredProps} = this.constructor;
 
-    const intersection = Component._intersect(requiredProps, this.propNames());
-
-    if (intersection.length > 0) throw new InvalidComponentError();
+    if (difference(requiredProps, this.propNames()).length > 0) {
+      throw new InvalidComponentError();
+    }
 
     return true;
   }
 
-  toString() {
+  toString () {
     this.validateRequired();
 
-    const props = this._props.map(prop => prop.toString());
-    const components = this._components.map(component => component.toString());
+    const props = this.internalProps.map((prop) => {
+      return prop.toString();
+    });
+
+    const components = this.internalComponents.map((component) => {
+      return component.toString();
+    });
 
     return [
       this.prefix,
@@ -95,24 +119,25 @@ export default class Component {
     ].join(this.constructor.separator);
   }
 
-  toBlob() {
-    return new Blob([this.toString()], { type: MIME_TYPE });
+  toBlob () {
+    return new Blob([this.toString()], {type: MIME_TYPE});
   }
 
-  toBase64() {
+  toBase64 () {
     const blob = this.toBlob();
     const reader = new window.FileReader();
 
     return new Promise((resolve, reject) => {
       reader.readAsDataURL(blob);
-      reader.onloadend = () => resolve(reader.result);
-      reader.onerror = () => reject(reader.error);
-      reader.onabort = () => reject();
+      reader.onloadend = () => {
+        resolve(reader.result);
+      };
+      reader.onerror = () => {
+        reject(reader.error);
+      };
+      reader.onabort = () => {
+        reject();
+      };
     });
-  }
-
-  static _intersect(a, b) {
-    const b_ = new Set(b);
-    return a.filter(item => !b_.has(item));
   }
 }

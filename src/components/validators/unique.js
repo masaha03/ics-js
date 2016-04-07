@@ -1,8 +1,9 @@
+import difference from 'lodash/difference';
 import Property from '../../Property';
 import Component from '../../Component';
-import { ValidationError } from '../../errors';
+import {ValidationError} from '../../errors';
 
-export default function unique(uniqueNames) {
+export default (uniqueNames) => {
   return (component, subject) => {
     let subjectName;
     let names;
@@ -15,10 +16,8 @@ export default function unique(uniqueNames) {
       names = component.componentNames();
     }
 
-    const a = new Set(names);
-    const b = new Set([subjectName, ...uniqueNames]);
-    const difference = new Set([...a].filter(x => !b.has(x)));
-
-    if (difference > 1) throw new ValidationError();
+    if (difference(names, [subjectName, ...uniqueNames]) > 1) {
+      throw new ValidationError();
+    }
   };
-}
+};

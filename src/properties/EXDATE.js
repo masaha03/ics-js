@@ -1,27 +1,30 @@
 import formatDate from 'format-date';
-import { DATE_FORMAT, DATE_TIME_FORMAT } from '../constants';
+import {DATE_FORMAT, DATE_TIME_FORMAT} from '../constants';
 import Property from '../Property';
 
 export default class EXDATE extends Property {
   static propName = 'EXDATE';
 
-  shortTransformer() {
+  shortTransformer () {
     if (Array.isArray(this.value)) {
-      return !this.value.every(value => value instanceof Date);
+      return !this.value.every((value) => {
+        return value instanceof Date;
+      });
     } else {
       return true;
     }
   }
 
-  transformer() {
-    const valueIsDate = this.props.VALUE == 'DATE';
+  transformer () {
+    const valueIsDate = this.props.VALUE === 'DATE';
     const format = valueIsDate ? DATE_FORMAT : DATE_TIME_FORMAT;
 
-    return this.value.map(function(value) {
+    return this.value.map((value) => {
       if (valueIsDate) {
         // Remove timezone offset
         const offset = value.getTimezoneOffset() * 60000;
-        value = new Date(value.getTime() + offset);
+
+        return formatDate(format, new Date(value.getTime() + offset));
       }
 
       return formatDate(format, value);

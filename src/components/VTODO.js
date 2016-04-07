@@ -1,5 +1,5 @@
 import Component from '../Component';
-import { singleton, unique } from './validators';
+import {singleton, unique} from './validators';
 
 export default class VTODO extends Component {
   static componentName = 'VTODO';
@@ -7,6 +7,7 @@ export default class VTODO extends Component {
   static requiredProps = ['DTSTAMP', 'UID'];
 
   static validProps = {
+    /* eslint-disable key-spacing, sorting/sort-object-props */
     DTSTAMP:           [singleton()],
     UID:               [singleton()],
 
@@ -22,11 +23,11 @@ export default class VTODO extends Component {
     PERCENT:           [singleton()],
     PRIORITY:          [singleton()],
     'RECURRENCE-ID':   [singleton()],
+    RRULE:             [singleton()],
     SEQUENCE:          [singleton()],
     STATUS:            [singleton()],
     SUMMARY:           [singleton()],
     URL:               [singleton()],
-    RRULE:             [singleton()],
 
     DUE:               [singleton(), unique(['DURATION'])],
     DURATION:          [singleton(), unique(['DUE'])],
@@ -37,10 +38,11 @@ export default class VTODO extends Component {
     COMMENT:           [],
     CONTACT:           [],
     EXDATE:            [],
-    'REQUEST-STATUS':  [],
+    RDATE:             [],
     RELATED:           [],
-    RESOURCES:         [],
-    RDATE:             []
+    'REQUEST-STATUS':  [],
+    RESOURCES:         []
+    /* eslint-disable key-spacing, sorting/sort-object-props */
   }
 
   static validComponents = {
