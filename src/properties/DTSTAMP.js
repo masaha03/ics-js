@@ -1,5 +1,4 @@
-import formatDate from 'format-date';
-import {DATE_FORMAT, DATE_TIME_FORMAT} from '../constants';
+import {formatDate} from '../helpers';
 import Property from '../Property';
 
 /**
@@ -26,9 +25,10 @@ export default class DTSTAMP extends Property {
    * @returns {string} The property's transformed value.
    */
   transformer () {
-    let value = this.value;
-
+    let value;
     const valueIsDate = this.props.VALUE === 'DATE';
+
+    value = this.value;
 
     if (valueIsDate) {
       // Remove timezone offset
@@ -37,8 +37,6 @@ export default class DTSTAMP extends Property {
       value = new Date(this.value.getTime() + offset);
     }
 
-    const format = valueIsDate ? DATE_FORMAT : DATE_TIME_FORMAT;
-
-    return formatDate(format, value);
+    return formatDate(value, !valueIsDate);
   }
 }
