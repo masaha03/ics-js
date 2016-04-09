@@ -7,7 +7,7 @@ import {ValidationError} from '../../errors';
  * Validator to ensure only one instance of the subject of a subset of types is
  * present in the component.
  *
- * @param {string[]} uniqueNames Names of the subset of types.
+ * @param {string[]} uniqueNames - Names of the subset of types.
  * @throws {ValidationError} An instance of a type in the subset of types is already present in the component.
  */
 export default (uniqueNames) => {

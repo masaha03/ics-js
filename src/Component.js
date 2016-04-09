@@ -110,10 +110,10 @@ export default class Component {
   /**
    * Add a property to the component.
    *
-   * @param {string} name Name of the property (e.g. DTSTAMP).
-   * @param {*} [value] Value of the property.
-   * @param {Object} [props={}] Object of properties for the property. Object keys and values are directly injected.
-   * @param {boolean} [skipTransformer=false] Explicitly determine if the property's value is transformed.
+   * @param {string} name - Name of the property (e.g. DTSTAMP).
+   * @param {*} [value] - Value of the property.
+   * @param {Object} [props={}] - Object of properties for the property. Object keys and values are directly injected.
+   * @param {boolean} [skipTransformer=false] - Explicitly determine if the property's value is transformed.
    * @throws {InvalidProvidedPropError} Provided property type is not in the component's list of valid property types.
    * @returns {Property} Configured property instance.
    */
@@ -159,7 +159,7 @@ export default class Component {
   /**
    * Add a component to the component.
    *
-   * @param {Component} component Configured component to add to the component.
+   * @param {Component} component - Configured component to add to the component.
    * @throws {InvalidProvidedComponentError} Provided component type is not in the component's list of valid component types.
    * @returns {Component} Provided component.
    */

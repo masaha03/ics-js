@@ -13,9 +13,9 @@ export default class Property {
   /**
    * Create a new property.
    *
-   * @param {*} value Value of the property.
-   * @param {Object} [props={}] Object of properties for the property. Object keys and values are directly injected.
-   * @param {boolean} [skipTransformer=false] Explicitly determine if the property's value is transformed.
+   * @param {*} value - Value of the property.
+   * @param {Object} [props={}] - Object of properties for the property. Object keys and values are directly injected.
+   * @param {boolean} [skipTransformer=false] - Explicitly determine if the property's value is transformed.
    */
   constructor (value, props, skipTransformer = false) {
     /**
