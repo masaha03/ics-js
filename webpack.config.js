@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: 'dist',
     filename: 'ics-js.js',
+    libraryTarget: 'umd'
   },
 
   module: {
@@ -13,15 +14,17 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel'
       }
-    ],
+    ]
   },
 
   resolve: {
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.js'],
+    extensions: ['', '.js']
   },
+
+  target: 'node',
 
   plugins: [
     new webpack.NoErrorsPlugin(),
@@ -33,7 +36,7 @@ module.exports = {
       mangle: true,
       output: {
         comments: false
-      },
-    }),
-  ],
+      }
+    })
+  ]
 };
